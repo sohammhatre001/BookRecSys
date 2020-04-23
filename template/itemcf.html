@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>BOOKRECSYS</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+{% extends "template.html" %}
+{% block content %}
+<div class="login">
+    <h1>Top N Similar Books</h1>
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('itemcf')}}" method="post">
+        <input type="text" name="n" placeholder="No. of Similar Books you want" required="required"/>
+        <input type="text" name="book_title" placeholder="Book_Title" required="required"/>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Recommend</button>
+    </form>
+
+    <br>
+    <br>
+    {{ recommendations }}
+    <br>
+
+</div>
+{% endblock %}
+
+</body>
+</html>
